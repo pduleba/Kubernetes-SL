@@ -1,1 +1,1 @@
-kubectl describe pod %1
+kubectl describe pod %1 -o wide

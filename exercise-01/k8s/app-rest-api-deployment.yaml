@@ -18,6 +18,7 @@ spec:
       labels:
         io.kompose.service: app-rest-api
     spec:
+      # nested pod definition
       containers:
       - image: app-rest-api
         imagePullPolicy: IfNotPresent

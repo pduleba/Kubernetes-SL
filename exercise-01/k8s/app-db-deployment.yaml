@@ -18,6 +18,7 @@ spec:
       labels:
         io.kompose.service: app-db
     spec:
+      # nested pod definition
       containers:
       - env:
         - name: MYSQL_ROOT_PASSWORD
