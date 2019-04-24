@@ -80,11 +80,11 @@ k8s tries to reflect as actual state is his reality.
 
 ## Deployments
 <kbd><img src="/architecture/img/deployments.png"></kbd>
+* is for **rolling updates** and **rollbacks**
 * describes deployment (i.e. image, scaling procedure) via file in YAML or JSON format
     <kbd><img src="/architecture/img/deployments-file-overview.png"></kbd>
 * deployed via __apiserver__ on **master**
 * provides **visioning** 
-* simple **rolling updates** and **rollbacks**
 
 ## ReplicaSet
 * Describes replication

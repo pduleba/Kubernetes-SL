@@ -22,8 +22,8 @@ More about architecture can be found [here](/architecture)
 
 #### Debug
 * `kubectl describe TYPES|TYPE TYPE_NAME` - Check details 
-* * for `TYPES` it is possible to use i.e. `pods`, `nodes`
-* * for `TYPE TYPE_NAME` it is possible to use i.e. `pod POD_NAME`, `node NODE_NAME`
+  * for `TYPES` it is possible to use i.e. `pods`, `nodes`
+  * for `TYPE TYPE_NAME` it is possible to use i.e. `pod POD_NAME`, `node NODE_NAME`
 * `kubectl logs POD_NAME -o wide` - Check logs of given `POD_NAME`
 * `kubectl exec -it -c CONTAINER_NAME POD_NAME -- /bin/bash` - Connect to `CONTAINER_NAME` in `POD_NAME`
 
@@ -35,12 +35,13 @@ More about architecture can be found [here](/architecture)
 
 #### Run via `Kompose` toolkit
 * `exec-k8s-run.bat` - apply `k8s` folder configuration into Kubernetes 
-* * `kubectl get pods` - check if both pods are in `Running` state
+  * `kubectl get pods` - check if both pods are in `Running` state
 * `exec-k8s-port-forward.bat POD_NAME` - enable port forwarding for `app-rest-api` pod
+  * for real scenarios `type: NodePort` should be defined in `app-rest-api-service.yaml`
 * `exec-k8s-destroy.bat` - delete deployments and services (`app-rest-api` and `app-db`)
 
 #### Run manually
-* `kubectl run app-db --image=app-mysql:latest --image-pull-policy=Never --env="MYSQL_ROOT_PASSWORD=password"` - Run MySQL
+* `kubectl run app-db --image=app-db:latest --image-pull-policy=Never --env="MYSQL_ROOT_PASSWORD=password"` - Run MySQL
 * `kubectl run app-rest-api --image=app-rest-api:latest --image-pull-policy=Never` - Run Spring Boot app
 * * `kubectl get pods` - check if both pods are in `Running` state
 * `kubectl port-forward POD_NAME 8888:8888` - Enable port forward for pod `POD_NAME`
