@@ -21,7 +21,9 @@ More about architecture can be found [here](/architecture)
 * `kubectl get rs` - see status of `replicaSets` elements on k8s
 
 #### Debug
-* `kubectl describe pod POD_NAME` - Check `POD_NAME` state details
+* `kubectl describe TYPES|TYPE TYPE_NAME` - Check details 
+* * for `TYPES` it is possible to use i.e. `pods`, `nodes`
+* * for `TYPE TYPE_NAME` it is possible to use i.e. `pod POD_NAME`, `node NODE_NAME`
 * `kubectl logs POD_NAME` - Check logs of given `POD_NAME` 
 * `kubectl exec -it -c CONTAINER_NAME POD_NAME -- /bin/bash` - Connect to `CONTAINER_NAME` in `POD_NAME`
 
