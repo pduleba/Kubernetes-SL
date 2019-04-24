@@ -1,1 +1,0 @@
-kubectl port-forward %1 8888:8888

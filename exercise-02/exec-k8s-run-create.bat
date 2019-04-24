@@ -1,0 +1,1 @@
+kubectl apply -f ./../exercise-01/k8s

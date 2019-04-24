@@ -10,6 +10,9 @@ metadata:
     io.kompose.service: app-rest-api
   name: app-rest-api
 spec:
+  # if your cluster supports it, uncomment the following to automatically create
+  # an external load-balanced IP for the frontend service.
+  type: LoadBalancer
   ports:
   - name: "8888"
     port: 8888

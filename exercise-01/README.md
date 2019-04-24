@@ -36,20 +36,19 @@ More about architecture can be found [here](/architecture)
 #### Run via `Kompose` toolkit
 * `exec-k8s-run.bat` - apply `k8s` folder configuration into Kubernetes 
   * `kubectl get pods` - check if both pods are in `Running` state
-* `exec-k8s-port-forward.bat POD_NAME` - enable port forwarding for `app-rest-api` pod
-  * for real scenarios `type: NodePort` should be defined in `app-rest-api-service.yaml`
 * `exec-k8s-destroy.bat` - delete deployments and services (`app-rest-api` and `app-db`)
 
 #### Run manually
 * `kubectl run app-db --image=app-db:latest --image-pull-policy=Never --env="MYSQL_ROOT_PASSWORD=password"` - Run MySQL
 * `kubectl run app-rest-api --image=app-rest-api:latest --image-pull-policy=Never` - Run Spring Boot app
-* * `kubectl get pods` - check if both pods are in `Running` state
-* `kubectl port-forward POD_NAME 8888:8888` - Enable port forward for pod `POD_NAME`
+  * `kubectl get pods` - check if both pods are in `Running` state
 * `kubectl delete deployment app-db app-rest-api` - Delete deployments
 * `kubectl delete service app-db app-rest-api` - Delete deployments
 
 
 ## Extra
 * `exec-convert.bat` - convert `docker-compose.yml` into Kubernetes deployment (YAML files in `k8s`)
-* * **WARNING !!!** `kompose convert` generates no `imagePullPolicy` which is #BUG imho (manual fix required)
-* * See [Kompose documentation](http://kompose.io/) for details
+  * **WARNING !!!** `kompose convert` generates no `imagePullPolicy` which is #BUG imho (manual fix required)
+  **type: LoadBalancer** in `app-rest-api-service.yaml` overrides default **type: ClusterIP** type to allow external IP expose
+* `kubectl port-forward POD_NAME 8888:8888` - manually enable port forward for pod `POD_NAME`
+* See [Kompose documentation](http://kompose.io/) for details

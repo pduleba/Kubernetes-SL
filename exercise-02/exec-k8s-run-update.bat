@@ -1,0 +1,1 @@
+kubectl apply -f ./k8s-v2 --record

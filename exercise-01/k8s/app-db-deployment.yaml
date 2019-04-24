@@ -12,7 +12,12 @@ metadata:
 spec:
   # nested `replica-set` definition
   replicas: 1
-  strategy: {}
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   template:
     metadata:
       creationTimestamp: null
