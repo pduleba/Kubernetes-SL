@@ -5,10 +5,8 @@ Demonstrates how to do
 
 * rolling update
   * update `app-db` docker image 
-  * increase from `1` to `5` containers 
 * rolling rollback
   * downgrade `app-db` docker image 
-  * decrease from `5` to `1` container 
 
 in Kubernetes world. 
 
@@ -16,6 +14,7 @@ in Kubernetes world.
 
 #### prerequisites (one of)
 * see [exercise-01](/exercise-01) for details
+* build Docker image with id `app-db:release-candidate`
 
 #### Update
 * `exec-k8s-run-create.bat` - deploy V1
