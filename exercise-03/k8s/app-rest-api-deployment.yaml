@@ -1,23 +1,19 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml -o ../k8s
-    kompose.image-pull-policy: IfNotPresent
-    kompose.version: 1.17.0 (a74acad)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: app-rest-api
   name: app-rest-api
+  labels:
+    app: app-rest-api
 spec:
   # nested `replica-set` definition
   replicas: 1
-  strategy: {}
+  selector:
+    matchLabels:
+      app: app-rest-api
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: app-rest-api
+        app: app-rest-api
     spec:
       # nested `pod` definition
       containers:

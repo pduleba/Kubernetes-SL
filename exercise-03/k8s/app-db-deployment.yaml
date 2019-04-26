@@ -1,39 +1,40 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml -o ../k8s
-    kompose.image-pull-policy: IfNotPresent
-    kompose.version: 1.17.0 (a74acad)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: app-db
   name: app-db
+  labels:
+    app: app-db
 spec:
   # nested `replica-set` definition
   replicas: 1
-  minReadySeconds: 5
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
+  selector:
+    matchLabels:
+      app: app-db
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: app-db
+        app: app-db
     spec:
       # nested `pod` definition
       containers:
-      - env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: password
-        image: app-db
+      - image: app-db
         name: app-db
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: app-db
+                key: password-secret
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3306
         resources: {}
+        volumeMounts:
+          - name: app-db-persistent-storage
+            mountPath: /var/lib/mysql
       restartPolicy: Always
+      volumes:
+        - name: app-db-persistent-storage
+          persistentVolumeClaim:
+            claimName: app-db-volumeclaim
 status: {}
