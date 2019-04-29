@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-v2
+  labels:
+    app: web-v2
+spec:
+  # nested `replica-set` definition
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-v2
+  template:
+    metadata:
+      labels:
+        app: web-v2
+    spec:
+      # nested `pod` definition
+      containers:
+      - image: gcr.io/google-samples/hello-app:2.0
+        name: web-v2
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,1 @@
+kubectl get ingress web-ingress -o jsonpath --template={@.status.loadBalancer.ingress[:1].ip}

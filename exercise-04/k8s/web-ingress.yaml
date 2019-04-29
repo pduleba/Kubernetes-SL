@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+# allows to expose load balancing via path matching similar i.e. to AWS Application Load Balancer 
+kind: Ingress
+metadata:
+  name: web-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /v1/*
+        backend:
+          serviceName: web-v1
+          servicePort: 8080
+      - path: /v2/*
+        backend:
+          serviceName: web-v2
+          servicePort: 8080
