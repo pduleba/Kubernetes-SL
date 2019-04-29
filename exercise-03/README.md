@@ -1,4 +1,4 @@
-# Kubernetes - Exercise 02 - Secrets and persistent disks
+# Kubernetes - Exercise 03 - Secrets and persistent disks
 
 ## Introduction
 Demonstrates how to use

@@ -1,4 +1,4 @@
-# Kubernetes
+# Kubernetes - Exercise 01
 
 ## Introduction
 Kubernetes self learning (continuation of Docker-SL :: Exercise 05)
